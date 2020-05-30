@@ -10,15 +10,15 @@ from gevent.pywsgi import WSGIServer
 import tensorflow as tf
 from tensorflow import keras
 
-from tensorflow.keras.applications.imagenet_utils import preprocess_input, decode_predictions
+from tensorflow.keras.applications.vgg16  import preprocess_input, decode_predictions
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
-
+import tensorflow.python.framework.dtypes
 # Some utilites
 import numpy as np
 from util import base64_to_pil
 
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 # Declare a flask app
 app = Flask(__name__)
 
@@ -28,12 +28,12 @@ app = Flask(__name__)
 from keras.applications.mobilenet_v2 import MobileNetV2
 model = MobileNetV2(weights='imagenet')
 
-print('Model loaded. Check http://127.0.0.1:5000/')
+print('Model loaded. Check http://localhost/')
 
 
 # Model saved with Keras model.save()
-MODEL_PATH = 'models/your_model.h5'
-
+# MODEL_PATH = 'C:/Users\Admin\Desktop\keras-flask-deploy-webapp\models\model_30k_new_20.h5'
+#
 # Load your own trained model
 # model = load_model(MODEL_PATH)
 # model._make_predict_function()          # Necessary
@@ -91,5 +91,5 @@ if __name__ == '__main__':
     # app.run(port=5002, threaded=False)
 
     # Serve the app with gevent
-    http_server = WSGIServer(('0.0.0.0', 5000), app)
+    http_server = WSGIServer(('localhost', 80), app)
     http_server.serve_forever()
