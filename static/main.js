@@ -130,9 +130,9 @@ function displayImage(image, id) {
 
 function displayResult(data) {
   // display the result
-  // imageDisplay.classList.remove("loading");
+  imageDisplay.classList.remove("loading");
   hide(loader);
-  predResult.innerHTML = data.result;
+  predResult.innerHTML = "Description: " + data.result;
   show(predResult);
 }
 

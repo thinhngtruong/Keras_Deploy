@@ -2,7 +2,7 @@
 
 <div class="main">
   <div class="title">
-    <h3>Image Classifier</h3>
+    <h3>Image Captioning</h3>
     <!-- <p>
       <small>A web app demo</small>
     </p> -->
@@ -16,17 +16,17 @@
     </label>
   </div>
   <div style="margin-bottom: 2rem;">
-    <input type="button" value="Submit" class="button" onclick="submitImage();" />
+    <input type="button" value="Submit" class="button" style="margin-right: 2rem" onclick="submitImage();" />
     <input type="button" value="Clear" class="button" onclick="clearImage();" />
   </div>
 
   <div id="image-box">
     <img id="image-display" />
-    <div id="pred-result" class="hidden"></div>
     <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
       <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
     </svg>
   </div>
+    <div id="pred-result" class="hidden"></div>
 </div>
 
 {% endblock %}
