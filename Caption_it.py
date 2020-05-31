@@ -1,42 +1,19 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[2]:
-
-
-import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import keras
-import json
 import pickle
-from tensorflow.keras.applications.vgg16 import VGG16
-from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input, decode_predictions
+from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-
-# In[4]:
-
-
 model = load_model("C:/Users\Admin\Desktop\keras-flask-deploy-webapp\models\model_9.h5", compile = False)
 model._make_predict_function()
 
-# In[6]:
-
-
 model_temp = ResNet50(weights="imagenet", input_shape=(224,224,3))
-
-
-# In[7]:
 
 
 # Create a new model, by removing the last layer (output layer of 1000 classes) from the resnet50
 model_resnet = Model(model_temp.input, model_temp.layers[-2].output)
 model_resnet._make_predict_function()
-
-# In[8]:
 
 
 def preprocess_image(img):
@@ -47,23 +24,11 @@ def preprocess_image(img):
     return img
 
 
-# In[15]:
-
-
 def encode_image(img):
     img = preprocess_image(img)
     feature_vector = model_resnet.predict(img)
     feature_vector = feature_vector.reshape(1, feature_vector.shape[1])
     return feature_vector
-
-
-# In[ ]:
-
-
-
-
-
-# In[25]:
 
 
 with open("C:/Users\Admin\Desktop\keras-flask-deploy-webapp\storage\word_to_idx.pkl", 'rb') as w2i:
@@ -72,20 +37,6 @@ with open("C:/Users\Admin\Desktop\keras-flask-deploy-webapp\storage\word_to_idx.
 with open("C:/Users\Admin\Desktop\keras-flask-deploy-webapp\storage\idx_to_word.pkl", 'rb') as i2w:
     idx_to_word = pickle.load(i2w)
 
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[28]:
 
 
 def predict_caption(photo):
@@ -110,20 +61,9 @@ def predict_caption(photo):
     
     return final_caption
 
-
-# In[29]:
-
-
 def caption_this_image(image):
 
     enc = encode_image(image)
     caption = predict_caption(enc)
     
     return caption
-
-
-# In[ ]:
-
-
-
-
