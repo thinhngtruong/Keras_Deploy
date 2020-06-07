@@ -1,4 +1,5 @@
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 # Flask
 from random import randint
 from flask import Flask, request, render_template, jsonify, send_file
@@ -6,9 +7,6 @@ from gevent.pywsgi import WSGIServer
 from gtts import gTTS
 from util import base64_to_pil, urlConfig
 import Caption_it
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-
 # Declare a flask app
 app = Flask(__name__)
 
@@ -33,14 +31,7 @@ def predict():
         caption = Caption_it.caption_this_image(path)
         obj = gTTS(text=caption, slow=False, lang='en')
 
-        #Delete old wav file
-        os.chdir(urlConfig + "\static")
-        for file in os.listdir("."):
-            if os.path.isfile(file) and file.startswith("speech"):
-                try:
-                    os.remove(file)
-                except Exception as e:
-                    print(e)
+        delete_old_file()
         #generate new file name for browers get new wav file. Unless, browers use its cache.
         random = randint(1,100000)
         obj.save(urlConfig + "\static\speech" + str(random) + ".wav")
@@ -48,6 +39,16 @@ def predict():
         return jsonify(result=caption, key=random)
 
     return None
+
+def delete_old_file():
+    # Delete old wav file
+    os.chdir(urlConfig + "\static")
+    for file in os.listdir("."):
+        if os.path.isfile(file) and file.startswith("speech"):
+            try:
+                os.remove(file)
+            except Exception as e:
+                print(e)
 
 if __name__ == '__main__':
     http_server = WSGIServer(('localhost', 80), app)
