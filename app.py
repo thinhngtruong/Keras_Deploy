@@ -51,5 +51,7 @@ def delete_old_file():
                 print(e)
 
 if __name__ == '__main__':
+    # for other device access the website
+    # app.run(host='0.0.0.0')
     http_server = WSGIServer(('localhost', 80), app)
     http_server.serve_forever()
