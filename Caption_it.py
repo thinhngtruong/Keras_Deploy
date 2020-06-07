@@ -4,8 +4,9 @@ from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from util import urlConfig
 
-model = load_model("C:/Users\Admin\Desktop\keras-flask-deploy-webapp\models\model_9.h5", compile = False)
+model = load_model(urlConfig + "\models\model_9.h5", compile = False)
 model._make_predict_function()
 
 model_temp = ResNet50(weights="imagenet", input_shape=(224,224,3))
@@ -31,10 +32,10 @@ def encode_image(img):
     return feature_vector
 
 
-with open("C:/Users\Admin\Desktop\keras-flask-deploy-webapp\storage\word_to_idx.pkl", 'rb') as w2i:
+with open(urlConfig + "\storage\word_to_idx.pkl", 'rb') as w2i:
     word_to_idx = pickle.load(w2i)
     
-with open("C:/Users\Admin\Desktop\keras-flask-deploy-webapp\storage\idx_to_word.pkl", 'rb') as i2w:
+with open(urlConfig + "\storage\idx_to_word.pkl", 'rb') as i2w:
     idx_to_word = pickle.load(i2w)
 
 

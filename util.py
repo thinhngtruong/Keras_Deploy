@@ -27,3 +27,4 @@ def np_to_base64(img_np):
     img.save(buffered, format="PNG")
     return u"data:image/png;base64," + base64.b64encode(buffered.getvalue()).decode("ascii")
 
+urlConfig = "C:/Users\Admin\Desktop\keras-flask-deploy-webapp"

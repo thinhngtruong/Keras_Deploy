@@ -37,14 +37,13 @@
   var uploadCaption = document.getElementById("upload-caption");
   var predResult = document.getElementById("pred-result");
   var loader = document.getElementById("loader")
+  var audio = document.getElementById("audio")
 //========================================================================
 // Main button events
 //========================================================================
 
   function submitImage() {
     // action for the submit button
-    console.log("submit");
-
     if (!imageDisplay.src || !imageDisplay.src.startsWith("data")) {
       window.alert("Please select an image before submit.");
       return;
@@ -67,6 +66,7 @@
     predResult.innerHTML = "";
 
     hide(loader);
+    hide(audio)
     show(uploadCaption);
 
     imageDisplay.classList.remove("loading");
@@ -74,7 +74,6 @@
 
   function previewFile(file) {
     // show the preview of the image
-    console.log(file.name);
     var fileName = encodeURI(file.name);
 
     var reader = new FileReader();
@@ -84,7 +83,7 @@
       $('#image-preview').hide()
       $('#image-preview').fadeIn(650)
       hide(uploadCaption);
-``
+      hide(audio)
       // reset
       predResult.innerHTML = "";
       imageDisplay.classList.remove("loading");
@@ -130,8 +129,13 @@
     imageDisplay.classList.remove("loading");
     hide(loader);
     predResult.innerHTML = "Description: " + data.result;
-    $('#pred-result').hide()
+    $('#audio').attr("src","/static/speech" + data.key + ".wav");
+    $('#pred-result').hide();
     $('#pred-result').fadeIn(650);
+    $('#audio').hide();
+    $('#audio').fadeIn(650);
+    show(audio);
+    audio.play();
   }
 
   function hide(el) {
