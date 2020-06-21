@@ -66,7 +66,8 @@
     predResult.innerHTML = "";
 
     hide(loader);
-    hide(audio)
+    hide(audio);
+    $('#audio').hide();
     show(uploadCaption);
 
     imageDisplay.classList.remove("loading");
@@ -84,6 +85,7 @@
       $('#image-preview').fadeIn(650)
       hide(uploadCaption);
       hide(audio)
+      $('#audio').hide();
       // reset
       predResult.innerHTML = "";
       imageDisplay.classList.remove("loading");
