@@ -8,7 +8,7 @@
   <div class="panel">
     <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
     <label for="file-upload" id="file-drag" class="upload-box">
-      <div id="upload-caption">Kéo thả ảnh vào đây hoặc click để chọn</div>
+      <div id="upload-caption">Click để chọn </div>
       <img id="image-preview" />
     </label>
   </div>
@@ -16,10 +16,10 @@
     <input type="button" value="Đồng ý" class="btn btn-success btn-lg" style="margin-right: 4rem" onclick="submitImage();" />
     <input type="button" value="Xóa" class="btn btn-danger btn-lg" onclick="clearImage();" />
   </div>
-
   <div id="image-box">
-    <img id="image-display" />
+      <img id="image-display" />
   </div>
+
     <div id="loader" class="hidden"></div>
     <div id="pred-result"></div>
     <audio controls id="audio" class="hidden" crossOrigin = 'anonymous'></audio>
