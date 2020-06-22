@@ -8,13 +8,27 @@
   <div class="panel">
     <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
     <label for="file-upload" id="file-drag" class="upload-box">
-      <div id="upload-caption">Click để chọn </div>
+      <div id="upload-caption">
+          <div style="text-align: center">
+              <i class="fas fa-images" style="font-size: 70px"></i>
+          </div>
+          Nhấn vào đây để upload ảnh
+      </div>
       <img id="image-preview" />
     </label>
   </div>
   <div style="margin-bottom: 2rem;">
-    <input type="button" value="Đồng ý" class="btn btn-success btn-lg" style="margin-right: 4rem" onclick="submitImage();" />
-    <input type="button" value="Xóa" class="btn btn-danger btn-lg" onclick="clearImage();" />
+    <button type="button" class="btn btn-lg btn-primary" style="margin-right: 2rem; background-color:#005AA6; border-color:#005AA6; border-radius: 3rem;"
+            onclick="submitImage();" >
+        <i class="fas fa-check"></i>
+        &nbsp;
+        Đồng ý
+    </button>
+    <button type="button"class="btn btn-lg btn-danger" style="border-color:#dc3545; border-radius: 3rem; " onclick="clearImage();">
+      <i class="fas fa-trash"></i>
+        &nbsp;
+        Xóa
+    </button>
   </div>
   <div id="image-box">
       <img id="image-display" />

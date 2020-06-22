@@ -3,12 +3,14 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 # Flask
 from random import randint
 from flask import Flask, request, render_template, jsonify, send_file
+from flask_fontawesome import FontAwesome
 from gevent.pywsgi import WSGIServer
 from gtts import gTTS
 from util import base64_to_pil, urlConfig
 import Caption_it
 # Declare a flask app
 app = Flask(__name__)
+fa = FontAwesome(app)
 
 print('Model loaded. Check at http://localhost/')
 
@@ -52,6 +54,6 @@ def delete_old_file():
 
 if __name__ == '__main__':
     # for other device access the website
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0')
     # http_server = WSGIServer(('localhost', 80), app)
     # http_server.serve_forever()

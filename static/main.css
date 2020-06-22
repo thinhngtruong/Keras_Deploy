@@ -95,6 +95,11 @@ body {
   display: none;
 }
 
+#upload-caption {
+  color: #CCCCCC;
+  font-size: 20px;
+}
+
 #image-result {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height: 15rem;
@@ -119,7 +124,7 @@ body {
 
 #pred-result {
   color: black;
-  font-size: 1.5rem;
+  font-size: 2rem;
   /*position: absolute;*/
   top: 50%;
   left: 50%;
