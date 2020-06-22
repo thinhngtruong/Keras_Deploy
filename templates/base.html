@@ -14,10 +14,12 @@
     <nav class="navbar navbar-dark bg-dark" style="position: fixed; top: 0; width: 100%; font-family: roboto">
         <div class="container">
             <a class="navbar-brand" href="#" >IMAGE CAPTIONING APP</a>
-            <button class="btn btn-secondary" type="submit">Help</button>
+{#            <button class="btn btn-secondary" type="submit">Help</button>#}
         </div>
     </nav>
-  <body style="background-image: url({{url_for('static',filename='background.jpg')}});
+  <body style="
+          height: 100vh;
+          background-image: url({{url_for('static',filename='background.jpg')}});
           background-color: hsla(0,0%,100%,0.50);
           background-blend-mode: overlay;">
     {% block content %}{% endblock %}
