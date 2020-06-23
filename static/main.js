@@ -1,7 +1,7 @@
 //========================================================================
 // Drag and drop image handling
 //========================================================================
-
+  $('#pred-result').hide();
   var fileDrag = document.getElementById("file-drag");
   var fileSelect = document.getElementById("file-upload");
 
