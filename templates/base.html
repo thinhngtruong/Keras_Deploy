@@ -12,15 +12,11 @@
     {{ fontawesome_html() }}
   </head>
     <nav class="navbar navbar-dark bg-dark" style="position: fixed; top: 0; width: 100%; font-family: roboto">
-        <div class="container">
-            <a class="navbar-brand" href="#" >IMAGE CAPTIONING APP</a>
-{#            <button class="btn btn-secondary" type="submit">Help</button>#}
-        </div>
+            <a class="navbar-brand" id="appName" href="#">IMAGE CAPTIONING APPLICATION</a>
     </nav>
   <body style="
-          height: 100vh;
           background-image: url({{url_for('static',filename='background.jpg')}});
-          background-color: hsla(0,0%,100%,0.50);
+          background-color: hsla(0,0%,90%,0.7);
           background-blend-mode: overlay;">
     {% block content %}{% endblock %}
   </body>

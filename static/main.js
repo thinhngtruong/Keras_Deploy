@@ -20,6 +20,8 @@
 
   if(isMobile){
       $('#title').css("font-size", "25px")
+      $('body').css("background-position-x", "20%")
+      $('#appName').css({"width" : "100%", "margin-right" : "0", "text-align" : "center" })
   }
 
   function fileDragHover(e) {
